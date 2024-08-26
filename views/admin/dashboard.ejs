@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, <%= admin.username %></h1>
+    
+    <h2>List Of Users</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <h2>Manage Volunteers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% volunteers.forEach(volunteer => { %>
+                <tr>
+                    <td><%= volunteer.username %></td>
+                    <td><%= volunteer.email %></td>
+                    <td>
+                        <form action="/admin/remove-volunteer/<%= volunteer._id %>" method="POST" style="display:inline;">
+                            <button type="submit">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <a href="/admin/add-volunteer">Add New Volunteer</a>
+    
+    <form action="/admin/logout" method="POST" style="margin-top: 20px;">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

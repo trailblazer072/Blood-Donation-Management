@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Stock</title>
+</head>
+<body>
+    <h1>Current Blood Stock</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Blood Type</th>
+                <th>Quantity</th>
+                <th>Last Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% bloodStock.forEach(stock => { %>
+                <tr>
+                    <td><%= stock.bloodType %></td>
+                    <td><%= stock.quantity %></td>
+                    <td><%= stock.lastUpdated.toISOString().split('T')[0] %></td> <!-- Format date -->
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/volunteer/dashboard">Back to Dashboard</a>
+</body>
+</html>
